@@ -1,0 +1,1 @@
+EXEC FindAnnualProfit @StateName='Indiana'

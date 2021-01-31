@@ -1,0 +1,12 @@
+DROP TABLE orders;
+DROP TABLE order_events;
+DROP TABLE products;
+DROP TABLE sub_categories;
+DROP TABLE categories;
+DROP TABLE manufactureres;
+DROP TABLE customers;
+DROP TABLE cities;
+DROP TABLE postal_codes;
+DROP TABLE states;
+DROP TABLE regions;
+DROP TABLE countries;

@@ -1,0 +1,1 @@
+EXEC FindPopularCategory @Category='Furniture', @Year=2017
