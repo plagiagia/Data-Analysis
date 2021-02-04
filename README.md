@@ -20,6 +20,8 @@ The analysys includes:
  - AOV (Average Order Value)
  - Time analysis
  - Customer Trends
+ 
+ <img src="./Visualizing_with_Tableau/Data/Images/new_customers.png" width="800" height="400" />
 
 LINK:[Project](./Visualizing_with_Tableau)
 
