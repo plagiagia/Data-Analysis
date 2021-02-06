@@ -1,11 +1,11 @@
 ## Project: Visualizing Company’s Sales Data 
-***
+
 ### Goal: 
 The goal of this project is to understand business' data in-depth and make a sales analysis. We want to find out which practices are not a good fit for the company and make better choices for the sales market. All the project is done into Tableau 
-***
+
 ## Background: 
 We are working for the same company as the previous project. Now that we have created a structured Relational Database its time for us as analysts to make a search into the company's records and find out what is best for the company and what has to change. In the end, we have to come up with a presentation with all the important findings and record a video to be viewed from the company's director.
-***
+
 ## Walkthrough:
 
 The way we have to approach this task is to make ourselves as many questions we can, but always have in mind the **BIG Question**, this that the companies directors want to know the most. How are they gonna make more profit?
