@@ -13,7 +13,11 @@ I choose for this project to take another approach. First, I want to analyze the
 ### Create the database
 In the Visual Studio environment, I start creating the control flow. As the first step, I create a SQL task which will connect to my local server and then create an empty database.
 
-![Create the database](DATA/IMAGES/create_database.png)
+
+<p align='center'>
+ <img src="DATA/IMAGES/create_database.png" width="600" height="300">
+</p>
+
 
 ```sql
 -- This line of code will be executed from the SQL task.
@@ -22,15 +26,24 @@ CREATE DATABASE Airbnb_20191012;
 ### Create the data flow
 Now that I have a database, I can read the raw file, make some controls, and some cleanup and then fill in the database with data that I can work with it.
 
-![Create the dataflow](DATA/IMAGES/data_flow.png)
+<p align='center'>
+ <img src="DATA/IMAGES/data_flow.png" width="600" height="300">
+</p>
+
 
 The first problem I want to tackle is the Null values. After checking all the columns, I find out which of them has missing values. From these columns, I decided to drop out the entries with null values in `HostSince`  and `PropertyType` columns. The rest entries with missing values I found essential to keep and replace the NULL with something that makes sense for each feature.
 
-![Filter out all null values](DATA/IMAGES/null_values.png)
+<p align='center'>
+ <img src="DATA/IMAGES/null_values.png" width="600" height="300">
+</p>
+
 
 As we see in the diagram above, we filter out all the entries that have missing Signup dates and property type. The records will be saved in a CSV file so we can examine later.
 
-![Fill missing values 1](DATA/IMAGES/fill_missing_values.png)
+<p align='center'>
+ <img src="DATA/IMAGES/fill_missing_values.png">
+</p>
+
 
 Now, this is how I choose to go with the rest of the missing values.
 Zipcodes with null, replaced with 0. 
@@ -41,11 +54,17 @@ Zipcodes with null, replaced with 0.
 
 - The missing reviews are self-explained; we replace them with 0.
 
-![Fill missing values 2](DATA/IMAGES/replace_missing_values.png)
+<p align='center'>
+ <img src="DATA/IMAGES/replace_missing_values.png">
+</p>
+
 
 Through all these steps, the missing values will be handled, and the data will be ready for the next phase, where we will create the SQL tasks. 
 
-![Create SQL tasks](DATA/IMAGES/run_sql_tasks.png)
+<p align='center'>
+ <img src="DATA/IMAGES/run_sql_tasks.png">
+</p>
+
 
 The graph above shows two SQL tasks, one creates all the tables, and the other fills the tables with the appropriate data and with the proper relationships and constraints.
 
@@ -57,9 +76,16 @@ Now in this final step, I run all the tasks at once.
 - Create the tables with all the constraints
 - Fill the tables with the appropriate data
 
-![Diagram of the database](DATA/IMAGES/tables.png)
 
-![Missing values](DATA/IMAGES/missing_values.png)
+<p align='center'>
+ <img src="DATA/IMAGES/tables.png" width=600 height=300>
+</p>
+
+
+<p align='center'>
+ <img src="DATA/IMAGES/missing_values.png" width=600 height=300>
+</p>
+
 
 ## Visual analysis:
 
@@ -69,7 +95,11 @@ Now that we are all set, its time for the visual analysis of the data.
 I have created two dashboards; each one sees the dataset from a different angle. The first one is the [summary dashboard](Dashboards/visual_analysis_price.pbit), which shows the big picture. 
 
 
-![Summary Dashboard](DATA/IMAGES/summary_dashboard.png)
+
+<p align='center'>
+ <img src="DATA/IMAGES/summary_dashboard.png" width=600 height=300>
+</p>
+
 
 
 Its answers questions like, 
@@ -97,7 +127,10 @@ The last significant value we can acquire from this dashboard is the top 10 entr
 
 Having concluded with the summary dashboard, its time to move on to the next one. The price [analysis dashboard](Dashboards/visual_analysis_price.pbit). Price is the most important metric that exists in our dataset, is our depended metric. It is the metric we want to watch out closely, so we instantly spot an outlier or an anomaly such as a host who tries to deceive some peopleor a new market pattern.
 
-![Price analysis dashboard](DATA/IMAGES/price_analysis.png)
+
+<p align='center'>
+ <img src="DATA/IMAGES/price_analysis.png" width=600 height=300>
+</p>
 
 Looking at this dashboard, we acquire some useful information such as how the average price is changing throughout all the years, how the review score is correlated with the average price, how the property type or the room type changes the way a host charges for his property and lastly how the district influences the average price too. 
 
