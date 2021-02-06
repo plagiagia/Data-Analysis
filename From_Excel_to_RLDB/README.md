@@ -1,14 +1,14 @@
 ## Project: Convert company excel sheets to Relational DB
-***
+
 ### Goal: 
 The goal of this project is to convert a company's excel sheet with all the information's of the transactions the company has done the past years till now.
-***
+
 ## Background: 
 The company Sales Rocket (fiction name) has hired us as data analysts to fix their problem. They have realized that keeping all the order details in one excel sheet is not a great idea. The size of the data has grown so much that they can not anymore use them efficiently.
-***
+
 ## Solution:
 One word, Relational Databases. This kind of database can stores data with different levels of hierarchy and keeping the DB structured and well organized. 
-***
+
 ## Walkthrough:
 -  Analyze the RAW data (excel sheet): In this step, we have to see how the data looks like and with what types of data we have to work with. Are all the dates in the same format? Are the numerical values considered as such or as simple text? Are there long lines of text in fields such as comments or names that can introduce errors in the database?
 
