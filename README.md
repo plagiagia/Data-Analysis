@@ -9,6 +9,8 @@ The goal of this project is to convert a company's excel sheet with all the info
  - Write SQL for DB and tables creation 
  - Create procedures to maintain the server, creating auto Backups and DB replication.
 
+<img src="From_Excel_to_RLDB\Data\excel_company.png" width="800" height="400" align='center'>
+
 LINK: [Project](./From_Excel_to_RLDB)
 
 ## Project: *Visualizing Company’s Sales Data*
@@ -21,7 +23,7 @@ The analysys includes:
  - Time analysis
  - Customer Trends
  
- <img src="./Visualizing_with_Tableau/Data/Images/new_customers.png" width="800" height="400" />
+ <img src="./Visualizing_with_Tableau/Data/Images/new_customers.png" width="800" height="400" align='center'>
 
 LINK:[Project](./Visualizing_with_Tableau)
 
@@ -36,6 +38,8 @@ For the ETL process I used the `Microsoft Visual Studio` and for the Visualizati
   - Load the data into the database
   - Make the analysis
   - Create the final Dashboard 
+
+ <img src="./ETL_with_Airbnb\DATA\IMAGES\summary_dashboard.png" width="800" height="400" align='center'>
 
 LINK:[Project](./ETL_with_Airbnb)
 
