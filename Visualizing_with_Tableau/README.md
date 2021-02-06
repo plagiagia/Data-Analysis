@@ -19,7 +19,9 @@ This is very important, to have the ability to translate the business goal into 
 ### What about profit?
 The first thing to do is to analyze how the profit is distributed for all the years the company is running. In general, a distribution plot can show us a lot of information about the data.
 
-![Profit Distribution](Data/Images/profit_distribution.png)
+<p align="center">
+  <img width="800" height="400" src="Data/Images/profit_distribution.png">
+</p>
 
 The profit is symmetric and well distributed, but we notice two negative points. 
 
@@ -35,8 +37,9 @@ Now let's make the same analysis for the revenue.  Revenue is the sales the comp
 profit = revenue - expenses
 ```
 
-![Revenue Distribution](Data/Images/revenue_distribution.png)
-
+<p align="center">
+  <img width="800" height="400" src="Data/Images/revenue_distribution.png">
+</p>
 
 The distribution of the revenue doesn't look like the profit's distribution, we don't make negative revenue and the values are much higher that's why are represented into a logarithmic scale. Outliers are present but they don't cause such a big problem. What is more interesting is the most of the revenue comes from products with sales around 0 - 300K $
 
@@ -46,11 +49,17 @@ We want to know now what is the average profit of an order. This metric will hel
 ```
 We calculate the Sum of profit for each distinct order for each month the company runs. After that, we calculated the average value of these values.
 ```
-![AOV Table](Data/Images/average_order_value_table.png)
+
+<p align="center">
+  <img src="Data/Images/average_order_value_table.png">
+</p>
 
 Tables are great but the human eye can not spot any abnormalities, so let's make a line graph.
 
-![AOV](Data/Images/average_order_value.png)
+
+<p align="center">
+  <img width="800" height="400" src="Data/Images/average_order_value.png">
+</p>
 
 Much better, and we can see that something was wrong with the January 2016. We notice that and consider for further analysis. But now that we calculated the AOV let's check, in which products categories we excel.
 
@@ -58,7 +67,9 @@ Much better, and we can see that something was wrong with the January 2016. We n
 
 Now we will check the AVG profit in each Subgroup of all product categories we have.
 
-![Average Profit per SubCategory](Data/Images/average_profit_Subcategory.png)
+<p align="center">
+  <img width="800" height="400" src="Data/Images/average_profit_Subcategory.png">
+</p>
 
 At first look someone can say, Technology has better products, where Furniture has the worst. But let's not make quick assumptions yet. Tech products indeed bring more profit to the company but we want to find a strategy to increase that profit and having only expensive machines or other Technology products doesn't make much sense.
 
@@ -71,7 +82,10 @@ We calculate the Sum of profit concerning the unique customers in each state.
 
 This way we have a better a picture about the buying capabilities of the customers in each state. We can see in which states the customers are more keen to buy expensive products and in which the customers perform below average.
 
-![Profit per State](Data/Images/profit_state.png)
+
+<p align="center">
+  <img width="800" height="400" src="Data/Images/profit_state.png">
+</p>
 
 So now we can make two different target groups. One for the customers in the *strong states*, and one for those in *below-average states*
 
@@ -80,8 +94,9 @@ Now let's make some analysis on how we perform focusing on time frames.
 
 First, let's see what is the TBO(Time between orders). This will help us understand if we have long *dead* periods where the company had no orders. 
 
-
-![TBO](Data/Images/time_between_orders.png)
+<p align="center">
+  <img width="800" height="400" src="Data/Images/time_between_orders.png">
+</p>
 
 This is a quite huge graph to display it whole but 3 metrics are clear to see, the min, max and AVG values. Having a min of 1 day and a max of 4 is not so bad performance for a company. Maybe we can inspect what happened in these 4 days and we had no orders.
 
@@ -94,7 +109,10 @@ Knowing the AOV we can calculate the loss of each day without order.
 
 Next, we analyze the time difference between the order date and ship date.
 
-![Order Date and ship date diff](Data/Images/time_between_orders_ship.png)
+<p align="center">
+  <img width="800" height="400" src="Data/Images/time_between_orders_ship.png">
+</p>
+
 
 This time we labeled the results with the ship mode the customers used for the delivery. Again everything seems fine. We can deliver in good times with an average of 2.1 days.
 
@@ -108,17 +126,24 @@ Now, in the final analysis, we take a look of three important things.
 
 The order frequency analysis shows how oft a customer will place an order.
 
-![Customer Order frequency](Data/Images/customer_order_frequency.png)
+<p align="center">
+  <img src="Data/Images/customer_order_frequency.png">
+</p>
 
 Oh, this is interesting 4800 customers bought only once from us and after that nothing. Only 94 bought a second time and 2 for the third time. The problem of the company is that it can't hold the customers loyal and make them return to place an order.
 
 This will be shown better in the next graph of the Cohort analysis.
 
-![Cohort analysis](Data/Images/cohort_analysis.png)
+<p align="center">
+  <img src="Data/Images/cohort_analysis.png">
+</p>
+
 
 The last graph of our analysis will be the new customer acquisition. This will show which categories tend to bring to the company new customers.
 
-![New customer acquisition](Data/Images/new_customers.png)
+<p align="center">
+  <img src="Data/Images/new_customers.png">
+</p>
 
 ## Conclusions
 
@@ -138,7 +163,9 @@ Also if there is the money and the time make further analysis to find out what h
 
 With only this simple change we see an increase in the AOV of 114%
 
-![Conclusion](Data/Images/conlusion.png)
+<p align="center">
+  <img src="Data/Images/conlusion.png">
+</p>
 
 
 ## TOOLS:
