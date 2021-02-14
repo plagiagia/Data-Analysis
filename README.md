@@ -56,4 +56,6 @@ LINK:[Project](./ETL_Pipeline)
 ## Project: *Earthquakes*
 Analysing the earthquakes in Greece in a jupyter notebook
 
+![gif](./Earthquakes/static/gif_earthquakes.gif)
+
 LINK:[Project](./Earthquakes)

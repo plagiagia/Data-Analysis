@@ -5,5 +5,5 @@ Tools:
 - Plotly
 - Matplotlib
 
-![gif](.\static\gif_earthquakes.gif)
+![gif](./static/gif_earthquakes.gif)
 ![img](./static/greece.PNG)
