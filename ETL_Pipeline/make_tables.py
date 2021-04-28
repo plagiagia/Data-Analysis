@@ -11,11 +11,11 @@ def connect_to_database():
     actual DB and reset the connection to point to the newly created one.
     """
 
-    # Take the variables from the environmnet
-    host = os.environ.get("HOST", "127.0.0.1")
-    dbname = os.environ.get("DATABASE_NAME", "the name of an existing DB")
-    user = os.environ.get("DB_USER", "the actual user of the DB")
-    password = os.environ.get("DB_PASSWORD", "the db password")
+    # Take the variables from the environment
+    host = os.environ.get("HOST", "")
+    dbname = os.environ.get("DATABASE_NAME", "")
+    user = os.environ.get("DB_USER", "")
+    password = os.environ.get("DB_PASSWORD", "")
 
     connection_template = "host={host} dbname={dbname} user={user} password={password} sslmode=disable".format(
         host=host, dbname=dbname, user=user, password=password)
@@ -26,12 +26,12 @@ def connect_to_database():
     # Make cursor to execute queries
     connection.set_session(autocommit=True)
     cursor = connection.cursor()
-    # Fetch DB name and print a messege if connection is established.
+    # Fetch DB name and print a message if connection is established.
     cursor.execute("SELECT current_database()")
     db_name = cursor.fetchone()
     print("You are connected with {} database".format(db_name))
 
-    # Returns the cursos and the connections object
+    # Returns the cursors and the connections object
     return cursor, connection
 
 
@@ -50,7 +50,6 @@ def drop_tables(cur, conn):
 
 
 def create_tables(cur, conn):
-
     q_table_postal_codes = """
     CREATE TABLE IF NOT EXISTS postal_codes (
     postal_code_id SERIAL CONSTRAINT post_key PRIMARY KEY,

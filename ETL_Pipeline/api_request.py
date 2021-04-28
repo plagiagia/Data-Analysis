@@ -1,8 +1,7 @@
 # Import libraries
 import os
-
-import pandas as pd
 import requests
+import constants
 
 # Set basic params and URL for api
 api_url = "https://api.yelp.com/v3/businesses/search"
@@ -11,7 +10,7 @@ params = {"term": "restaurants",
 
 # Set the API key and headers
 # This line of code will catch the API key from the environment variables
-api_key = os.environ.get("API_KEY", "the actual API KEY")
+api_key = os.environ.get("API_KEY", "")
 headers = {"Authorization": "Bearer {}".format(api_key)}
 
 
@@ -42,12 +41,11 @@ def get_response(url=api_url, params=params, headers=headers, offset=[0]):
         data = response.json()
         data_list.append(data)
 
-    return(data_list)
+    return data_list
 
 
 if __name__ == "__main__":
-
-    print("Recieve data...")
+    print("Receive data...")
     data = get_response(url=api_url, params=params, headers=headers,
                         offset=list(range(0, 100, 10)))
-    print("All data recieved...")
+    print("All data received...")
