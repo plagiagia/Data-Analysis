@@ -1,0 +1,14 @@
+import os
+
+API_KEY = "qwjPDzGEZmJ5A4KzroJCxp2TFJGucsaqdLIZlH80JMWW7vLJLLYQj0wan02HFQIXiD1400x2xDqggUTQ-VbafKF-OlpP6x0U51PQjsMJ8GNx0bCN46Wkl721Rr22XnYx"
+HOST = "127.0.0.1"
+DATABASE_NAME = "yelp"
+DB_USER = "postgres"
+DB_PASSWORD = "gia123321"
+
+
+os.environ['API_KEY'] = API_KEY
+os.environ['HOST'] = HOST
+os.environ['DATABASE_NAME'] = DATABASE_NAME
+os.environ['DB_USER'] = DB_USER
+os.environ['DB_PASSWORD'] = DB_PASSWORD
