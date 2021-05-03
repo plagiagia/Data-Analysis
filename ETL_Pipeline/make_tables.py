@@ -1,5 +1,6 @@
-import psycopg2
 import os
+
+import psycopg2
 
 
 def connect_to_database():
@@ -41,9 +42,9 @@ def drop_tables(cur, conn):
     conflicts.
     """
     q = """
-    DROP TABLE IF EXISTS restaurants CASCADE;
-    DROP TABLE IF EXISTS postal_codes CASCADE;
-    DROP TABLE IF EXISTS categories CASCADE;
+    DROP TABLE IF EXISTS restaurants RESTRICT;
+    DROP TABLE IF EXISTS postal_codes RESTRICT;
+    DROP TABLE IF EXISTS categories RESTRICT;
     """
     cur.execute(q)
     conn.commit()
@@ -52,34 +53,46 @@ def drop_tables(cur, conn):
 def create_tables(cur, conn):
     q_table_postal_codes = """
     CREATE TABLE IF NOT EXISTS postal_codes (
-    postal_code_id SERIAL CONSTRAINT post_key PRIMARY KEY,
-    postal_code VARCHAR (10));
+    PostalCodeID SERIAL CONSTRAINT post_pk PRIMARY KEY,
+    PostalCode VARCHAR (10));
     """
 
     q_table_categories = """
     CREATE TABLE IF NOT EXISTS categories (
-    category_id SERIAL CONSTRAINT category_key PRIMARY KEY,
-    category VARCHAR (50));
+    CategoryID SERIAL CONSTRAINT category_pk PRIMARY KEY,
+    Category VARCHAR (50));
     """
 
     q_table_restaurants = """
-    CREATE TABLE IF NOT EXISTS restaurant (
+    CREATE TABLE IF NOT EXISTS restaurants_ifo (
     id VARCHAR CONSTRAINT restaurant_pk PRIMARY KEY,
-    restaurant_name VARCHAR (100),
-    reviews INT CHECK (reviews > 0),
-    rating DECIMAL (2, 1),
-    coordinates_latitude DECIMAL (8, 6),
-    coordinates_longitude DECIMAL (8, 6),
-    postal_code_id INT,
-    category_id INT,
-    FOREIGN KEY (postal_code_id) REFERENCES postal_codes (postal_code_id),
-    FOREIGN KEY (category_id) REFERENCES categories (category_id)
+    RestaurantName VARCHAR (50),
+    Reviews INT CONSTRAINT positive_reviews CHECK (reviews > 0),
+    Rating DECIMAL (2, 1) CONSTRAINT positive_rating CHECK (rating > 0),
+    Price VARCHAR(5),
+    RestaurantPhone VARCHAR(20),
+    RestaurantAddress VARCHAR(50),
+    RestaurantLatitude DECIMAL (8, 6),
+    RestaurantLongitude DECIMAL (8, 6),
+    RestaurantDistance DECIMAL (7, 3) CONSTRAINT positive_distance CHECK (RestaurantDistance > 0),
+    PostalCodeID INT,
+    FOREIGN KEY (PostalCodeID) REFERENCES postal_codes (PostalCodeID),
     );
     """
 
+    q_table_restaurants_and_categories = """
+    CREATE TABLE IF NOT EXISTS rest_cats (
+    RestaurantID VARCHAR,
+    CategoryID INT,
+    FOREIGN KEY (RestaurantID) REFERENCES restaurants_ifo (id),
+    FOREIGN KEY (CategoryID) REFERENCES categories (CategoryID)
+    );
+"""
+
     q_list = [q_table_postal_codes,
               q_table_categories,
-              q_table_restaurants]
+              q_table_restaurants,
+              q_table_restaurants_and_categories]
 
     for each in q_list:
         cur.execute(each)
