@@ -353,3 +353,4 @@ MigrationBackup/
 .idea/
 desktop.ini
 ETL_Pipeline/constants.py
+ETL_Pipeline/python_scripts/constants.py
