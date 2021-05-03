@@ -51,6 +51,10 @@ This project is about a data Pipeline that takes data from an API and puts them 
   - Load the data into the database
   - Run some queries to find interesting information
 
+<p align="center">
+    <img alt="Pipeline" src="https://mermaid.ink/img/eyJjb2RlIjoiXG5ncmFwaCBURFxuc3ViZ3JhcGggRGVzdGluYXRpb25cbkUoRGF0YSBXYXJlaG91c2UpXG5lbmRcbkEoQ2xvdWQgQnVja2V0KSAtLVBpcGVsaW5lLS0-IEVcbkIoTW9iaWxlIEFwcCkgLS1QaXBlbGluZS0tPiBFXG5DKEFQSSkgLS1QaXBlbGluZS0tPiBFXG5EKExvY2FsIERhdGFiYW5rKSAtLVBpcGVsaW5lLS0-IEVcblxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0">
+</p>
+
 LINK:[Project](./ETL_Pipeline)
 
 ## Project: *Earthquakes*
