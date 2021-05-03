@@ -1,12 +1,12 @@
 # ETL Pipeline with Postgres
 
-For this project we apply data modeling using python. We will create an **ETL** pipeline to **E**xtract information for
+For this project, we apply data modeling using python. We will create an **ETL** pipeline to **E**xtract information for
 all restaurants from  [Yelp](https://www.yelp.de/berlin) in the area of Berlin. We **T**ransform the data using a
 pipeline with python and finally we **L**oad the data into an SQL database, cleaned and ready for analysis.
 
 ## Enter Pipeline
 
-The solution to this problem is a data pipeline. Like a physical pipeline system which drives the flow of any material
+The solution to this problem is a data pipeline. Like a physical pipeline system that drives the flow of any material
 from the source to the destination, a data pipeline comes to transfer the flow of data from any source to the desired
 destination. But not only that, it can make all the necessary transformations -while transferring the data- so the data
 reach their destination in the desired format and ready to be analyzed.
@@ -14,7 +14,6 @@ reach their destination in the desired format and ready to be analyzed.
 <p align="center">
     <img alt="Pipeline" src="https://mermaid.ink/img/eyJjb2RlIjoiXG5ncmFwaCBURFxuc3ViZ3JhcGggRGVzdGluYXRpb25cbkUoRGF0YSBXYXJlaG91c2UpXG5lbmRcbkEoQ2xvdWQgQnVja2V0KSAtLVBpcGVsaW5lLS0-IEVcbkIoTW9iaWxlIEFwcCkgLS1QaXBlbGluZS0tPiBFXG5DKEFQSSkgLS1QaXBlbGluZS0tPiBFXG5EKExvY2FsIERhdGFiYW5rKSAtLVBpcGVsaW5lLS0-IEVcblxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0">
 </p>
-
 
 The diagram above shows a simple explanation of what a pipeline is. In its simplest form, it's just a command that reads
 some data from a source, and applying or not some transformations drives the data to some source or even to another
@@ -26,41 +25,91 @@ The case scenario of this project is as follows:
 
 > We work for a small startup, and they want  to develop new services
 > into the food industry. They need an efficient way to get all
-> information about the restaurants in area of Berlin and run some
+> information about the restaurants in the area of Berlin and run some
 > analysis to see in  which  category of restaurants the people tend to
 > eat and leave more positive reviews.
 
 The Pipeline for this project will look as follows:
 
+For this project, the source is just an API and the destination would be a Postgres SQL database. So the pipeline for this project would look like this
 
 <p align="center">
     <img alt="Pipeline" src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcbnN1YmdyYXBoIERlc3RpbmF0aW9uXG5DKFNRTCBEQilcbmVuZFxuc3ViZ3JhcGggRVRMXG5Ce1RyYW5zb3JtYXRpb25zfVxuZW5kXG5zdWJncmFwaCBTb3VyY2VcbkEoQVBJKVxuZW5kXG5BLS1QaXBlbGluZS0tPiBCXG5CLS1QaXBlbGluZS0tPkNcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9">
 </p>
 
+
+Each API lets us make some GET/POST requests and sends back to us a payload with the appropriate information depending on what we send it. The logic behind each API is the same but each one uses a unique style of commands that need to be sent with each request to receive the correct response.
+
+Yelp's API has the following format
+
+```python
+ response = requests.get(api_url, params=params, headers=headers)
+```
+
+In the params dictionary, we have to define what do we want to look for, for this case it would be the following
+
+```python
+params = {"term": "restaurants",
+          "location": "berlin"}
+```
+
+Passing to the key terms: `term`:`restaurants` and `location`:`Berlin`, we ask the API to look for the term restaurants located in Berlin. 
+
+The request is almost ready, it requires more information. Although it's a public API, someone must be registered to use the API. After registration you will receive a KEY, this key should be passed to the request with the following text into the headers like this
+
+```python
+headers = {"Authorization": "Bearer {}".format(api_key)}
+```
+
+# Connect to the API
+
+As was said before, to make a request we need some credentials it is wise not to share in public projects. There a lot of ways to hide this from the public. I will demonstrate two of them.
+
+**Extract credentials to the environment**
+
+This way demands the creation of a bat file with all the commands needed to set a variable to the local environment, after doing that it is easy to retrieve this information in our code without fear of revealing it to the public.
+
+*.bat file
+>```cmd
+>set API_KEY = 'my-private-key'
+>```
+
+Run the file
+>```cmd
+>my_bat.bat
+>```
+
+**Make a file and import it in your project**
+
+This way is kind of more pythonic. It takes only the creation of a new file where each variable will have the values of some value needed for our project and has to stay private.
+
+environment_consts.py file
+>```python
+>API_KEY = 'api key'
+>```
+
+Project file
+>```python
+>from environment_consts import API_KEY
+>```
+
+
+
 # Connect to the database
 
 For this project, I choose to work with PostgreSQL and I used the [Psycopg](https://www.psycopg.org/docs/index.html)
-python library to connect to and execute queries to my database. This library works only if we have the DB already
-created. This step is already done using the [pgAdmin](https://www.pgadmin.org/) tool. I named the
-database `yelp_restaurants` and it's the last time I used this tool for transactions with my DB.
+python library to connect to and execute queries to my database. We can execute SQL queries either using the [pgAdmin](https://www.pgadmin.org/) tool or using python.
 
-The python file `make_tables.py` it makes the connections and creates all the tables that will be needed for this
-project. We have only to run the file but first, we need to export into the environment all the parameters used for the
-connection such as the database name, password, host, etc. For this reason, I created the `export_to_environment.bat` to
-set automatic all for me.
+If we want to run out DB from python we need to export into the environment all the parameters used for the
+a connection such as: *the database name*, *password*, *host*, *, etc*, but this step is already completed.
 
-# Create the tables
+To execute a query from python we need to make a connection with the DB, after that, we create a `cursor`, an object that deals with the execution of each query. In the end, we need to close the connection. For our luck pandas supports the transfer of a data frame to SQL database automatically but only using the SQLAlchemy library. For only this step we have to use this specific library
 
-If we run the `make_tables.py` file will create all the tables for us. The logic behind the tables is a normalized
-schema where we have a table for the location only, using the Zip code as primary key, a table for the categories of the
-restaurants, and lastly a table with all the restaurants with their respective information. Here we can also run the SQL
-code in the server but I used a more pythonic way and run the code using the Postgres library for python
-
-# Data format and the Transform process
+# Data format, and the Transform process
 
 The data we receive from the API are in JSON format and looks like this:
 
-```json
+```JSON
 {
   "businesses": [
     {
@@ -86,9 +135,10 @@ So we have to grab the `business` part and then read each key, value pair and lo
 problem now is that the JSON is deep nested. That means we have dictionaries nested into the data which we have to
 iterate again to receive the key, value pairs. If we read the data as it is it will look like this:
 
+
 ![Deep nested JSON](images/example_01.png)
 
-Clearly we can see there are columns with dictionaries as entries. That's we can fix using a more complex way to read
+We can see there are columns with dictionaries as entries. That's what we can fix using a more complex way to read
 the JSON file.
 
    ```python
@@ -104,4 +154,11 @@ the JSON file.
 More about how this works,
 in [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.json_normalize.html).
 
+
+# Final step
+
+After loading the raw data into the database we can use any DBMS for further analysis or to normalize the raw table 
+
+
+![Database](images/database.png)
 
