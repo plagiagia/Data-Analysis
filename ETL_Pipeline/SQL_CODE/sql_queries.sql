@@ -3,11 +3,10 @@ SELECT *
 FROM raw_table;
 
 -- DROP TABLES
-DROP TABLE IF EXISTS restaurants;
-DROP TABLE IF EXISTS postal_codes;
-DROP TABLE IF EXISTS categories;
-DROP TABLE IF EXISTS city;
 DROP TABLE IF EXISTS restaurants_info;
+DROP TABLE IF EXISTS postal_codes;
+DROP TABLE IF EXISTS city;
+DROP TABLE IF EXISTS categories;
 
 
 -- CREATE TABLE FOR CITY
@@ -28,14 +27,21 @@ CREATE TABLE IF NOT EXISTS postal_codes
 (
     PostalCodeID SERIAL
         CONSTRAINT post_pk PRIMARY KEY,
-    PostalCode   VARCHAR(10)
+    PostalCode   VARCHAR(10),
+    CityId       INT,
+    CONSTRAINT postal_city_fk FOREIGN KEY (CityId) REFERENCES city (CityId) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
 -- FILL TABLE POSTAL CODES
-INSERT INTO postal_codes (postalcode)
-SELECT DISTINCT restaurant_location_zip_code
-FROM raw_table;
+INSERT INTO postal_codes (PostalCode, CityId)
+SELECT raw_table.restaurant_location_zip_code,
+       city.cityid
+FROM raw_table
+         INNER JOIN
+     city ON city.city = raw_table.restaurant_location_city
+GROUP BY raw_table.restaurant_location_zip_code,
+         city.cityid;
 
 -- CREATE TABLE FOR CATEGORIES
 CREATE TABLE IF NOT EXISTS categories
@@ -108,3 +114,23 @@ FROM (Select restaurant_id                         AS id,
                restaurant_coordinates_longitude,
                restaurant_distance,
                postal_codes.postalcodeid) AS t1;
+
+-- CREATE TABLE FOR CATEGORIES AND RESTAURANTS
+CREATE TABLE IF NOT EXISTS restaurants_with_categories
+(
+    RestaurantID VARCHAR,
+    CategoryID   INT,
+    CONSTRAINT restaurant_id_fk FOREIGN KEY (RestaurantID) REFERENCES restaurants_info (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT category_id FOREIGN KEY (CategoryID) REFERENCES categories (CategoryID) ON DELETE CASCADE ON UPDATE CASCADE
+
+);
+
+-- FILL TABLE WITH RESTAURANTS AND CATEGORIES
+INSERT INTO restaurants_with_categories(RestaurantID, CategoryID)
+SELECT
+    restaurants_info.id,
+    categories.CategoryID
+From
+    restaurants_info Inner Join
+    raw_table On raw_table.restaurant_id = restaurants_info.id Inner Join
+    categories On raw_table.category_alias = categories.category
