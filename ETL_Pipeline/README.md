@@ -31,14 +31,17 @@ The case scenario of this project is as follows:
 
 The Pipeline for this project will look as follows:
 
-For this project, the source is just an API and the destination would be a Postgres SQL database. So the pipeline for this project would look like this
+For this project, the source is just an API and the destination would be a Postgres SQL database. So the pipeline for
+this project would look like this
 
 <p align="center">
     <img alt="Pipeline" src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcbnN1YmdyYXBoIERlc3RpbmF0aW9uXG5DKFNRTCBEQilcbmVuZFxuc3ViZ3JhcGggRVRMXG5Ce1RyYW5zb3JtYXRpb25zfVxuZW5kXG5zdWJncmFwaCBTb3VyY2VcbkEoQVBJKVxuZW5kXG5BLS1QaXBlbGluZS0tPiBCXG5CLS1QaXBlbGluZS0tPkNcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9">
 </p>
 
 
-Each API lets us make some GET/POST requests and sends back to us a payload with the appropriate information depending on what we send it. The logic behind each API is the same but each one uses a unique style of commands that need to be sent with each request to receive the correct response.
+Each API lets us make some GET/POST requests and sends back to us a payload with the appropriate information depending
+on what we send it. The logic behind each API is the same but each one uses a unique style of commands that need to be
+sent with each request to receive the correct response.
 
 Yelp's API has the following format
 
@@ -53,9 +56,12 @@ params = {"term": "restaurants",
           "location": "berlin"}
 ```
 
-Passing to the key terms: `term`:`restaurants` and `location`:`Berlin`, we ask the API to look for the term restaurants located in Berlin. 
+Passing to the key terms: `term`:`restaurants` and `location`:`Berlin`, we ask the API to look for the term restaurants
+located in Berlin.
 
-The request is almost ready, it requires more information. Although it's a public API, someone must be registered to use the API. After registration you will receive a KEY, this key should be passed to the request with the following text into the headers like this
+The request is almost ready, it requires more information. Although it's a public API, someone must be registered to use
+the API. After registration you will receive a KEY, this key should be passed to the request with the following text
+into the headers like this
 
 ```python
 headers = {"Authorization": "Bearer {}".format(api_key)}
@@ -63,47 +69,52 @@ headers = {"Authorization": "Bearer {}".format(api_key)}
 
 # Connect to the API
 
-As was said before, to make a request we need some credentials it is wise not to share in public projects. There a lot of ways to hide this from the public. I will demonstrate two of them.
+As was said before, to make a request we need some credentials it is wise not to share in public projects. There a lot
+of ways to hide this from the public. I will demonstrate two of them.
 
 **Extract credentials to the environment**
 
-This way demands the creation of a bat file with all the commands needed to set a variable to the local environment, after doing that it is easy to retrieve this information in our code without fear of revealing it to the public.
+This way demands the creation of a bat file with all the commands needed to set a variable to the local environment,
+after doing that it is easy to retrieve this information in our code without fear of revealing it to the public.
 
 *.bat file
->```cmd
+> ```cmd
 >set API_KEY = 'my-private-key'
 >```
 
 Run the file
->```cmd
+> ```cmd
 >my_bat.bat
 >```
 
 **Make a file and import it in your project**
 
-This way is kind of more pythonic. It takes only the creation of a new file where each variable will have the values of some value needed for our project and has to stay private.
+This way is kind of more pythonic. It takes only the creation of a new file where each variable will have the values of
+some value needed for our project and has to stay private.
 
 environment_consts.py file
->```python
+> ```python
 >API_KEY = 'api key'
 >```
 
 Project file
->```python
+> ```python
 >from environment_consts import API_KEY
 >```
-
-
 
 # Connect to the database
 
 For this project, I choose to work with PostgreSQL and I used the [Psycopg](https://www.psycopg.org/docs/index.html)
-python library to connect to and execute queries to my database. We can execute SQL queries either using the [pgAdmin](https://www.pgadmin.org/) tool or using python.
+python library to connect to and execute queries to my database. We can execute SQL queries either using
+the [pgAdmin](https://www.pgadmin.org/) tool or using python.
 
-If we want to run out DB from python we need to export into the environment all the parameters used for the
-a connection such as: *the database name*, *password*, *host*, *, etc*, but this step is already completed.
+If we want to run out DB from python we need to export into the environment all the parameters used for the a connection
+such as: *the database name*, *password*, *host*, *, etc*, but this step is already completed.
 
-To execute a query from python we need to make a connection with the DB, after that, we create a `cursor`, an object that deals with the execution of each query. In the end, we need to close the connection. For our luck pandas supports the transfer of a data frame to SQL database automatically but only using the SQLAlchemy library. For only this step we have to use this specific library
+To execute a query from python we need to make a connection with the DB, after that, we create a `cursor`, an object
+that deals with the execution of each query. In the end, we need to close the connection. For our luck pandas supports
+the transfer of a data frame to SQL database automatically but only using the SQLAlchemy library. For only this step we
+have to use this specific library
 
 # Data format, and the Transform process
 
@@ -135,11 +146,10 @@ So we have to grab the `business` part and then read each key, value pair and lo
 problem now is that the JSON is deep nested. That means we have dictionaries nested into the data which we have to
 iterate again to receive the key, value pairs. If we read the data as it is it will look like this:
 
-
 ![Deep nested JSON](images/example_01.png)
 
-We can see there are columns with dictionaries as entries. That's what we can fix using a more complex way to read
-the JSON file.
+We can see there are columns with dictionaries as entries. That's what we can fix using a more complex way to read the
+JSON file.
 
    ```python
   json_normalize(data['businesses'], sep="_",
@@ -154,11 +164,12 @@ the JSON file.
 More about how this works,
 in [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.json_normalize.html).
 
-
 # Final step
 
-After loading the raw data into the database we can use any DBMS for further analysis or to normalize the raw table 
-
+After loading the raw data into the database we can use any DBMS for further analysis or to normalize the raw table
 
 ![Database](images/database.png)
 
+<p align="center">
+    <img src="images/uml.png">
+</p>
