@@ -168,7 +168,11 @@ in [documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pa
 
 After loading the raw data into the database we can use any DBMS for further analysis or to normalize the raw table
 
-![Database](images/database.png)
+<p>
+    <img src="images/database.png">
+</p>
+
+**Database in final form after normalization**
 
 <p align="center">
     <img src="images/uml.png">
