@@ -6,4 +6,5 @@ Tools:
 - Matplotlib
 
 ![gif](./static/gif_earthquakes.gif)
+
 ![img](./static/greece.PNG)
