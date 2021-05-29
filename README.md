@@ -63,3 +63,11 @@ Analysing the earthquakes in Greece in a jupyter notebook
 ![gif](./Earthquakes/static/gif_earthquakes.gif)
 
 LINK:[Project](./Earthquakes)
+
+
+## Project: *Online dashboard with Dash and Python*
+Create a dashboard with **Dash** and **python**
+
+![gif](./berlin_restaurants/promo_gif.gif)
+
+LINK:[Project](./berlin_restaurants)
