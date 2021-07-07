@@ -71,3 +71,11 @@ Create a dashboard with **Dash** and **python**
 ![gif](./berlin_restaurants/promo_gif.gif)
 
 LINK:[Project](./berlin_restaurants)
+
+
+## Project: *Online store analysis*
+Analytics for an online store
+
+ <img src="business_analysis\download(1).png" width="800" height="400" align='center'>
+
+LINK:[Project](./business_analysis)
