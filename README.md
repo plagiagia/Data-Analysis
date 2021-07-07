@@ -76,6 +76,6 @@ LINK:[Project](./berlin_restaurants)
 ## Project: *Online store analysis*
 Analytics for an online store
 
- <img src="business_analysis\download(1).png" width="800" height="400" align='center'>
+ <img src="./business_analysis/romi.png" width="800" height="400" align='center'>
 
 LINK:[Project](./business_analysis)
