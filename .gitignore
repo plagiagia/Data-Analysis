@@ -354,3 +354,8 @@ MigrationBackup/
 desktop.ini
 ETL_Pipeline/constants.py
 ETL_Pipeline/python_scripts/constants.py
+business_analysis/datasets/visits_log_us.csv
+business_analysis/datasets/costs_us.csv
+business_analysis/datasets/orders_log_us.csv
+business_analysis/notebook.bat
+business_analysis/.ipynb_checkpoints/BI-analysis-checkpoint.ipynb
