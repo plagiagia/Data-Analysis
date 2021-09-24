@@ -1,5 +1,5 @@
 # Data Analysis portfolio
-This is a repository with all my projects, showcasing my skills in data engineering and data analysis. The inspirations of the projects came while being either on Mentorship or in a Self-taught environment from online sources such as [DataCamp](https://www.datacamp.com/),  [Udemy](https://www.udemy.com/), [DataQuest](https://www.dataquest.io/) and others. 
+This is a repository with all my projects, showcasing my skills in data engineering and data analysis.
 
 ## Project: *Convert company excel sheets to Relational DB*
 The goal of this project is to convert a company's excel sheet with all the information of the transactions the company has done the past years till now into a relational DB.
