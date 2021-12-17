@@ -1,7 +1,7 @@
 # A simple Weather App
 
 <p align=center>
-    <img alt="img_2.png" height="150" src="D:\GitHub\Data-Analysis\WeatherApp\images\img_2.png" width="150"/>
+    <img alt="img_2.png" height="150" src="images\img_2.png" width="150"/>
 </p>
 
 ## Technologies and Tools
