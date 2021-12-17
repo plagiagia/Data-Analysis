@@ -83,7 +83,10 @@ LINK:[Project](./business_analysis)
 
 ## Project: *A simple Weather App*
 This project showcases the use of databases and APIs in general. Behind the scenes there is a local database which holds the information coming from the API calls. 
-
+- Create a local database with PostgreSQL
+- Connect with the API and send requests
+- Transfer the data to the database
+- Connect to the database and explore the data collected
 
 <img src="https://github.com/plagiagia/Data-Analysis/blob/main/WeatherApp/images/results.PNG" align='center'>
 
