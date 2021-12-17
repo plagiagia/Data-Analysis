@@ -359,3 +359,4 @@ business_analysis/datasets/costs_us.csv
 business_analysis/datasets/orders_log_us.csv
 business_analysis/notebook.bat
 business_analysis/.ipynb_checkpoints/BI-analysis-checkpoint.ipynb
+WeatherApp/config.py
