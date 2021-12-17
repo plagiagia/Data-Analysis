@@ -79,3 +79,12 @@ Analytics for an online store
  <img src="./business_analysis/romi.png" width="800" height="400" align='center'>
 
 LINK:[Project](./business_analysis)
+
+
+## Project: *A simple Weather App*
+This project showcases the use of databases and APIs in general. Behind the scenes there is a local database which holds the information coming from the API calls. 
+
+
+<img src="https://github.com/plagiagia/Data-Analysis/blob/main/WeatherApp/images/results.PNG" align='center'>
+
+LINK:[Project](./WeatherApp/)
