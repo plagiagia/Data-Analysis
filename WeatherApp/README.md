@@ -21,7 +21,7 @@ city we choose.
 ## The API
 
 <p align=center>
-    <img src="D:\GitHub\Data-Analysis\WeatherApp\images\img_1.png" width="150" height="150" title="an api icon" align="center">
+    <img src="images\img_1.png" width="150" height="150" title="an api icon" align="center">
 </p>
 
 This app uses weather data acquired from the [OpenWeatherMap](https://openweathermap.org/current). The site demands that
@@ -112,7 +112,7 @@ database
 ## The Database
 
 <p align=center>
-    <img alt="img.png" height="150" src="D:\GitHub\Data-Analysis\WeatherApp\images\img.png" width="150"/>
+    <img alt="img.png" height="150" src="images\img.png" width="150"/>
 </p>
 
 For this project we're going to use [PostgreSQL](https://www.postgresql.org/download/) RDMS. It will allow us to run
@@ -130,7 +130,7 @@ have on our computer.Expanding the server list we see the following:
 **1. Activating/Creating the server**
 
 <p align=center>
-    <img src="D:\GitHub\Data-Analysis\WeatherApp\images\servers.PNG"/>
+    <img src="images\servers.PNG"/>
 </p>
 
 **Notice:** This probably is going to be different for each user. I have installed two versions of the PostgreSQL and
@@ -140,7 +140,7 @@ one custom server. We can create any amount of servers with custom configuration
 **2. Creating the Database**
 
 <p align=center>
-    <img src="D:\GitHub\Data-Analysis\WeatherApp\images\db_create.PNG"/>
+    <img src="images\db_create.PNG"/>
 </p>
 
 Under the databases we can see all the existing databases we have on this particular server. With righ click we can
@@ -149,7 +149,7 @@ create and configure a new one. For this project I created a new one with name `
 **3. Creating the table**
 
 <p align=center>
-    <img src="D:\GitHub\Data-Analysis\WeatherApp\images\schemas.PNG"/>
+    <img src="images\schemas.PNG"/>
 </p>
 
 Final step is to create a new table tha will hold all the data for our app. A table is an object that belongs to the
@@ -192,7 +192,7 @@ Right-click on the server and click on properties will prompt the following wind
 Navigate to connection and take a look of the Host name, Port that the server is running and username
 
 <p align=center>
-    <img src="D:\GitHub\Data-Analysis\WeatherApp\images\connection.PNG"/>
+    <img src="images\connection.PNG"/>
 </p>
 
 ## Putting all together
@@ -221,7 +221,7 @@ through some clicks or running SQL commands.
 Below are the results. The table has successfully been populated with the data from the API call
 
 <p align=center>
-    <img src="D:\GitHub\Data-Analysis\WeatherApp\images\results.PNG"/>
+    <img src="images\results.PNG"/>
 </p>
 
 ## Conclusion and final thoughts
