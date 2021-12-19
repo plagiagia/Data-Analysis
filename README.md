@@ -88,6 +88,6 @@ This project showcases the use of databases and APIs in general. Behind the scen
 - Transfer the data to the database
 - Connect to the database and explore the data collected
 
-<img src="https://github.com/plagiagia/Data-Analysis/blob/main/WeatherApp/images/results.PNG" align='center'>
+<img src="./WeatherApp/images/results.PNG" align='center'>
 
 LINK:[Project](./WeatherApp/)
