@@ -27,22 +27,6 @@ The analysys includes:
 
 LINK:[Project](./Visualizing_with_Tableau)
 
-## Project: *ETL and Visualizing Airbnb dataset*
-We have a dataset of Airbnb users in an excel sheet and we want to understand it and make a dashboard of all the important features.
-
-This project is a combination of building an ETL pipeline and also analyzing the final data.
-For the ETL process I used the `Microsoft Visual Studio` and for the Visualizations the `Microsoft Power BI`
-
- - Create the database
-  - Make the Data flow with all the transformations
-  - Load the data into the database
-  - Make the analysis
-  - Create the final Dashboard 
-
- <img src="./ETL_with_Airbnb\DATA\IMAGES\summary_dashboard.png" width="800" height="400" align='center'>
-
-LINK:[Project](./ETL_with_Airbnb)
-
 ## Project: *API  to SQL pipeline*
 This project is about a data Pipeline that takes data from an API and puts them into a SQL database. I used the [Yelp](https://www.yelp.de/berlin) API to search about restaurants in Berlin.
 
